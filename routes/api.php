@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function() {
-    Route::get('/tasks', 'TaskController@index');
-    Route::get('/tasks/{id}', 'TaskController@show');
-    Route::post('/tasks', 'TaskController@store');
-    Route::put('/tasks/{id}', 'TaskController@update');
-    Route::patch('/tasks/{id}/complete', 'TaskController@complete');
-    Route::delete('/tasks/{id}', 'TaskController@destroy');
+    Route::get('tasks', [TaskController::class, 'index']);
+    Route::get('tasks/{id}', [TaskController::class, 'show']);
+    Route::post('tasks', [TaskController::class, 'store']);
+    Route::put('tasks/{id}', [TaskController::class, 'update']);
+    Route::patch('tasks/{id}/complete', [TaskController::class, 'complete']);
+    Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
 });
 

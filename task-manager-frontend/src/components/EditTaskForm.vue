@@ -1,22 +1,38 @@
 <template>
     <div>
-      <h2>Edit Task</h2>
-      <form @submit.prevent="editTask">
-        <input v-model="task.title" required />
-        <textarea v-model="task.description"></textarea>
-        <button type="submit">Save Changes</button>
+      <h1>Edit Task</h1>
+      <form @submit.prevent="updateTask">
+        <label for="title">Title:</label>
+        <input v-model="task.title" type="text" id="title" required />
+        <label for="description">Description:</label>
+        <textarea v-model="task.description" id="description"></textarea>
+        <button type="submit">Update Task</button>
       </form>
     </div>
   </template>
-  
+
   <script>
+  import taskService from '@/services/taskService';
+
   export default {
-    props: ['task'],
-    methods: {
-      editTask() {
-        // Logic to edit the task
-      },
+    data() {
+      return {
+        task: {}
+      };
     },
+    created() {
+      this.fetchTask();
+    },
+    methods: {
+      async fetchTask() {
+        const response = await taskService.getTask(this.$route.params.id);
+        this.task = response.data.data;
+      },
+      async updateTask() {
+        await taskService.updateTask(this.$route.params.id, this.task);
+        this.$router.push('/');
+      }
+    }
   };
   </script>
-  
+
