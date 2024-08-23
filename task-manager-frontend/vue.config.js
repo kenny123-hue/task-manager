@@ -1,6 +1,3 @@
-const { defineConfig } = require('@vue/cli-service');
-
-module.exports = defineConfig({
-  // Your configuration options
-});
-
+module.exports = {
+    lintOnSave: false
+  }
