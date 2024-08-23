@@ -1,26 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
-</template>
+    <div id="app">
+      <h1>Task Manager</h1>
+      <TaskList />
+    </div>
+  </template>
 
-<script>
-export default {
-  name: 'App',
-};
-</script>
+  <script>
+  import TaskList from './components/TaskList.vue';
 
+  export default {
+    name: 'App',
+    components: {
+      TaskList
+    }
+  };
+  </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  <style>
+  /* Add your styles here */
+  </style>

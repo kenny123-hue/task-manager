@@ -1,17 +1,23 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import TaskList from '@/components/TaskList';
-import TaskDetails from '@/components/TaskDetails';
-import CreateTask from '@/components/CreateTask';
-import EditTask from '@/components/EditTask';
+import TaskList from '../components/TaskList.vue';
+import TaskDetails from '../components/TaskDetails.vue';
 
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
-    { path: '/', component: TaskList },
-    { path: '/tasks/:id', component: TaskDetails },
-    { path: '/create', component: CreateTask },
-    { path: '/edit/:id', component: EditTask }
+    {
+      path: '/',
+      name: 'TaskList',
+      component: TaskList
+    },
+    {
+      path: '/task/:id',
+      name: 'TaskDetails',
+      component: TaskDetails,
+      props: true
+    }
   ]
 });

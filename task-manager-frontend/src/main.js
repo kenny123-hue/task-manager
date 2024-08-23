@@ -1,5 +1,4 @@
 import axios from 'axios';
-import './assets/main.css';
 
 
 export default {
