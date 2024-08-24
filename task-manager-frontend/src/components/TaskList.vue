@@ -1,3 +1,4 @@
+
 <template>
     <div>
       <h1>Task List</h1>
@@ -11,6 +12,27 @@
       <router-link to="/create">Create New Task</router-link>
     </div>
   </template>
+  <script>
+  import axios from 'axios';
+
+  export default {
+    data() {
+      return {
+        tasks: []
+      };
+    },
+    created() {
+      axios.get('/api/v1/tasks')
+        .then(response => {
+          this.tasks = response.data;
+        })
+        .catch(error => {
+          console.error('There was an error!', error);
+        });
+    }
+  };
+  </script>
+
 
   <script>
   import taskService from '@/services/taskService';
